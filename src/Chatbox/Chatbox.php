@@ -6,7 +6,7 @@
  * Time: 19:06
  */
 
-namespace Chatbox;
+namespace Chatbox\Chatbox;
 
 use Chatbox\Box\Box;
 use Chatbox\Chatbox\Config;
