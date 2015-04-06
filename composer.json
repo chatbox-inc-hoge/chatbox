@@ -7,9 +7,10 @@
         }
     ],
     "autoload":{
-        "psr-4":{"Chatbox\\Chatbox\\": "src/"}
+        "psr-4":{"Chatbox\\": "src/"}
     },
     "require": {
+        "chatbox/box": "dev-master",
         "chatbox/migrate": "dev-master",
         "chatbox/phputil": "dev-master"
     },

@@ -7,7 +7,7 @@
  */
 namespace Chatbox\Chatbox;
 
-interface UserInterface {
+interface ChatboxUserInterface {
 
     public function chatboxGetId();
 

@@ -6,18 +6,16 @@
  * Time: 21:34
  */
 
-namespace Chatbox\Database\Eloquent;
+namespace Chatbox\Chatbox\Eloquent;
 
 use Chatbox\Chatbox\Schema\ChatboxRoom;
 
 class ModelRoom extends Base{
 
-    protected $fillable = ['*'];
+    protected $fillable = ['data'];
 
     public function getSchema()
     {
         return new ChatboxRoom("chatbox_room");
     }
-
-
 }

@@ -9,7 +9,7 @@
 namespace Chatbox\Chatbox\Room;
 
 use Chatbox\Container\ArrayContainerTrait;
-use Chatbox\Database\Eloquent\ModelRoom;
+use Chatbox\Chatbox\Eloquent\ModelRoom;
 
 class Room {
 
@@ -25,11 +25,13 @@ class Room {
      */
     protected $members;
 
-    function __construct(array $data = [])
+    function __construct(array $data = [],$roomId=null)
     {
-        $this->setData($data);
-        $this->members = new RoomMemberList();
-        $this->messages = new RoomMessageList();
+        $this->merge($data);
+        if($roomId){
+            $this->members = new RoomMemberList($roomId);
+            $this->messages = new RoomMessageList($roomId);
+        }
     }
 
     /**
@@ -37,7 +39,11 @@ class Room {
      */
     public function getMessages()
     {
-        return $this->messages;
+        if($this->messages){
+            return $this->messages;
+        }else{
+            throw new \Exception("cant get MessageObject");
+        }
     }
 
     /**
@@ -45,7 +51,11 @@ class Room {
      */
     public function getMembers()
     {
-        return $this->members;
+        if($this->members){
+            return $this->members;
+        }else{
+            throw new \Exception("cant get MembersObject");
+        }
     }
 
     public function getById($id){
@@ -58,8 +68,7 @@ class Room {
 
     public function getByModel(ModelRoom $model){
         $data = json_decode($model->data,true);
-        $data["id"] = $model->id;
-        return new static($data);
+        return new static($data,$model->id);
     }
 
     public function create(){

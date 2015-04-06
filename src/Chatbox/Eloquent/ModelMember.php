@@ -6,13 +6,13 @@
  * Time: 21:34
  */
 
-namespace Chatbox\Database\Eloquent;
+namespace Chatbox\Chatbox\Eloquent;
 
 use Chatbox\Chatbox\Schema\ChatboxMember;
 
 class ModelMember extends Base{
 
-    protected $fillable = ['*'];
+    protected $fillable = ['room_id','user_id','is_kicked'];
 
     public function getSchema()
     {
