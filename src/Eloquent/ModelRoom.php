@@ -8,14 +8,10 @@
 
 namespace Chatbox\Chatbox\Eloquent;
 
-use Chatbox\Chatbox\Schema\ChatboxRoom;
-
 class ModelRoom extends Base{
+
+    protected $schema = "room";
 
     protected $fillable = ['data'];
 
-    public function getSchema()
-    {
-        return new ChatboxRoom("chatbox_room");
-    }
 }

@@ -10,6 +10,7 @@ namespace Chatbox\Chatbox\Schema;
 use Chatbox\Traits\InstanceManager;
 use Chatbox\Chatbox\Eloquent\ModelRoom;
 use Chatbox\Chatbox\Eloquent\ModelMember;
+use Chatbox\Arr;
 
 
 class SchemaContainer extends \Chatbox\Migrate\Util\SchemaContainer{
@@ -26,13 +27,11 @@ class SchemaContainer extends \Chatbox\Migrate\Util\SchemaContainer{
         $this->addSchema("member",function(){
             return new ChatboxMember($this->tableName("member"));
         });
-    }
-
-    public function getEloquent($key){
-        $eloquent = [
-            "room" => new ModelRoom(),
-            "member" => new ModelMember()
-        ];
-
+        $this->addSchema("message",function(){
+            return new ChatboxMessage($this->tableName("message"));
+        });
+        $this->addSchema("readtime",function(){
+            return new ChatboxReadTime($this->tableName("readtime"));
+        });
     }
 }
